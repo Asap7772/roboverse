@@ -1,7 +1,8 @@
 import gym
 from roboverse.assets.shapenet_object_lists \
     import GRASP_TRAIN_OBJECTS, GRASP_TEST_OBJECTS, PICK_PLACE_TRAIN_OBJECTS, \
-    PICK_PLACE_TEST_OBJECTS, TRAIN_CONTAINERS, TEST_CONTAINERS, TRAIN_OBJECTS, OBJECT_SCALINGS, TRAIN_MULT_OBJ,TRAIN_MULT_OBJ_DRAWER
+    PICK_PLACE_TEST_OBJECTS, TRAIN_CONTAINERS, TEST_CONTAINERS, TRAIN_OBJECTS, OBJECT_SCALINGS, \
+    TRAIN_MULT_OBJ,TRAIN_MULT_OBJ_DRAWER,TRAIN_MULT_OBJ_DRAWER_FH, TRAIN_MULT_OBJ_DRAWER_SH, TRAIN_MULT_OBJ_P1,TRAIN_MULT_OBJ_P2,TRAIN_MULT_OBJ_P3
 import numpy as np
 ENVIRONMENT_SPECS = (
     {
@@ -1064,6 +1065,42 @@ ENVIRONMENT_SPECS = (
                    }
     },
     {
+        'id': 'Widow250DoubleDrawerOpenGraspNeutralRandObjFH-v0',
+        'entry_point': 'roboverse.envs.widow250_drawer:Widow250DoubleDrawerEnv',
+        'kwargs': {'drawer_pos': (0.47, 0.2, -.35),
+                   'reward_type': 'grasping',
+                   'control_mode': 'discrete_gripper',
+                   'object_names': TRAIN_MULT_OBJ_DRAWER_FH,
+                   'object_scales': [OBJECT_SCALINGS[x] for x in TRAIN_MULT_OBJ_DRAWER_FH],
+                   'object_orientations': [[0,0,1,0]]*len(TRAIN_MULT_OBJ_DRAWER_FH),
+                   'target_object': TRAIN_MULT_OBJ_DRAWER_FH[0],
+                   'load_tray': False,
+                   'start_opened': False,
+                   'use_neutral_action': True,
+                   'rand_target': True,
+                   'load_single': True,
+                   'num_obj_sample' : len(TRAIN_MULT_OBJ_DRAWER_FH)
+                   }
+    },
+    {
+        'id': 'Widow250DoubleDrawerOpenGraspNeutralRandObjOverlap-v0',
+        'entry_point': 'roboverse.envs.widow250_drawer:Widow250DoubleDrawerEnv',
+        'kwargs': {'drawer_pos': (0.47, 0.2, -.35),
+                   'reward_type': 'grasping',
+                   'control_mode': 'discrete_gripper',
+                   'object_names': TRAIN_MULT_OBJ_P1 + TRAIN_MULT_OBJ_P2,
+                   'object_scales': [OBJECT_SCALINGS[x] for x in TRAIN_MULT_OBJ_P1 + TRAIN_MULT_OBJ_P2],
+                   'object_orientations': [[0,0,1,0]]*len(TRAIN_MULT_OBJ_P1 + TRAIN_MULT_OBJ_P2),
+                   'target_object': (TRAIN_MULT_OBJ_P1 + TRAIN_MULT_OBJ_P2)[0],
+                   'load_tray': False,
+                   'start_opened': False,
+                   'use_neutral_action': True,
+                   'rand_target': True,
+                   'load_single': True,
+                   'num_obj_sample' : len(TRAIN_MULT_OBJ_P1 + TRAIN_MULT_OBJ_P2)
+                   }
+    },
+    {
         'id': 'Widow250DoubleDrawerGraspNeutralRandObj-v0',
         'entry_point': 'roboverse.envs.widow250_drawer:Widow250DoubleDrawerEnv',
         'kwargs': {'drawer_pos': (0.47, 0.2, -.35),
@@ -1079,6 +1116,42 @@ ENVIRONMENT_SPECS = (
                    'rand_target': True,
                    'load_single': True,
                    'num_obj_sample' : len(TRAIN_MULT_OBJ_DRAWER)
+                   }
+    },
+    {
+        'id': 'Widow250DoubleDrawerGraspNeutralRandObjSH-v0',
+        'entry_point': 'roboverse.envs.widow250_drawer:Widow250DoubleDrawerEnv',
+        'kwargs': {'drawer_pos': (0.47, 0.2, -.35),
+                   'reward_type': 'grasping',
+                   'control_mode': 'discrete_gripper',
+                   'object_names': TRAIN_MULT_OBJ_DRAWER_SH,
+                   'object_scales': [OBJECT_SCALINGS[x] for x in TRAIN_MULT_OBJ_DRAWER_SH],
+                   'object_orientations': [[0,0,1,0]]*len(TRAIN_MULT_OBJ_DRAWER_SH),
+                   'target_object': TRAIN_MULT_OBJ_DRAWER_SH[0],
+                   'load_tray': False,
+                   'start_opened': True,
+                   'use_neutral_action': True,
+                   'rand_target': True,
+                   'load_single': True,
+                   'num_obj_sample' : len(TRAIN_MULT_OBJ_DRAWER_SH)
+                   }
+    },
+        {
+        'id': 'Widow250DoubleDrawerGraspNeutralRandObjOverlap-v0',
+        'entry_point': 'roboverse.envs.widow250_drawer:Widow250DoubleDrawerEnv',
+        'kwargs': {'drawer_pos': (0.47, 0.2, -.35),
+                   'reward_type': 'grasping',
+                   'control_mode': 'discrete_gripper',
+                   'object_names': (TRAIN_MULT_OBJ_P2+TRAIN_MULT_OBJ_P3),
+                   'object_scales': [OBJECT_SCALINGS[x] for x in (TRAIN_MULT_OBJ_P2+TRAIN_MULT_OBJ_P3)],
+                   'object_orientations': [[0,0,1,0]]*len((TRAIN_MULT_OBJ_P2+TRAIN_MULT_OBJ_P3)),
+                   'target_object': (TRAIN_MULT_OBJ_P2+TRAIN_MULT_OBJ_P3)[0],
+                   'load_tray': False,
+                   'start_opened': True,
+                   'use_neutral_action': True,
+                   'rand_target': True,
+                   'load_single': True,
+                   'num_obj_sample' : len(TRAIN_MULT_OBJ_P2+TRAIN_MULT_OBJ_P3)
                    }
     },
     {

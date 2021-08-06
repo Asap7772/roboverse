@@ -11,7 +11,7 @@ from roboverse.utils import get_timestamp
 EPSILON = 0.1
 
 # TODO(avi): Clean this up
-NFS_PATH = '/nfs/kun1/users/avi/imitation_datasets/'
+NFS_PATH = '/nfs/kun1/users/asap7772/imitation_datasets/'
 
 
 def add_transition(traj, observation, action, reward, info, agent_info, done,
