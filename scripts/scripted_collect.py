@@ -6,6 +6,7 @@ import roboverse
 from roboverse.policies import policies
 import argparse
 from tqdm import tqdm
+from roboverse.envs.noise_wrapper import StochasticDynamicsWrapper
 
 from roboverse.utils import get_timestamp
 EPSILON = 0.1
@@ -100,6 +101,11 @@ def main(args):
         policy = policy_class(env, mult_reset = args.mult_reset, num_reset=args.num_reset)
     else:
         policy = policy_class(env)
+
+
+    if args.stoc_dynamics:
+        env = StochasticDynamicsWrapper(env, std=args.stoc_noise)
+
     num_success = 0
     num_saved = 0
     num_attempts = 0
@@ -152,6 +158,8 @@ if __name__ == "__main__":
     parser.add_argument('--mult_reset', action='store_true')
     parser.add_argument('--num_reset', type=int, default=5)
     parser.add_argument('--num_sample', type=int, default=10)
+    parser.add_argument('--stoc_dynamics', action='store_true')
+    parser.add_argument('--stoc_noise', type=float, default=0.1)
     args = parser.parse_args()
 
     main(args)

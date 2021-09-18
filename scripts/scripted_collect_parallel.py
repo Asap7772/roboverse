@@ -42,6 +42,8 @@ if __name__ == "__main__":
     parser.add_argument('--mult_reset', action='store_true')
     parser.add_argument('--num_reset', type=int, default=5)
     parser.add_argument('--num_sample', type=int, default=10)
+    parser.add_argument('--stoc_dynamics', action='store_true')
+    parser.add_argument('--stoc_noise', type=float, default=0.1)
 
     args = parser.parse_args()
 
@@ -65,6 +67,8 @@ if __name__ == "__main__":
                '-d{}'.format(save_directory),
                '--num_reset={}'.format(args.num_reset),
                '--num_sample={}'.format(args.num_sample),
+               '--stoc_dynamics={}'.format(args.stoc_dynamics),
+               '--stoc_noise={}'.format(args.stoc_noise),
                ]
 
     if args.save_all:
