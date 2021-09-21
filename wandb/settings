@@ -1,0 +1,5 @@
+[default]
+entity = asap7772
+project = cog_cql
+base_url = https://api.wandb.ai
+

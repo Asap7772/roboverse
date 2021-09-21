@@ -67,12 +67,13 @@ if __name__ == "__main__":
                '-d{}'.format(save_directory),
                '--num_reset={}'.format(args.num_reset),
                '--num_sample={}'.format(args.num_sample),
-               '--stoc_dynamics={}'.format(args.stoc_dynamics),
                '--stoc_noise={}'.format(args.stoc_noise),
                ]
 
     if args.save_all:
         command.append('--save-all')
+    if args.stoc_dynamics:
+        command.append('--stoc_dynamics')
     if args.mult_reset:
         command.append('--mult_reset')
 
